@@ -2,7 +2,7 @@
 
 def setup_cards(deck_antal=1):
     # skab kortdeck(s)
-    SUITS =('H', 'S', 'C', 'D')
+    SUITS =('♡', '♠', '♣', '♢')
     VALUES = ['A']
     # Tilføj nummerkort
     for i in range(2, 10):
