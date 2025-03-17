@@ -1,30 +1,32 @@
-def setup_cards(deck_antal=1):
-    # skab kortdeck(s)
-    SUITS =('♡', '♠', '♣', '♢')
-    VALUES = ['A']
-    # Tilføj nummerkort
-    for i in range(2, 10):
-        VALUES.append(str(i))
-    # Tilføj 10 - konge
-    VALUES.extend(['10']*4)
+import random
 
-    # Byg deck
-    deck = []
-    for suit in SUITS:
-        for value in VALUES:
-            deck.append(suit + value)
+class Deck:
+    def __init__(self, deck_antal=1):
+        # skab kortdeck(s)
+        SUITS =('♡', '♠', '♣', '♢')
+        VALUES = ['A']
+        # Tilføj nummerkort
+        for i in range(2, 10):
+            VALUES.append(str(i))
+        # Tilføj 10 - konge
+        VALUES.extend(['10']*4)
 
-    # Tilføj jokere
-    deck.extend(['J10']*3)
+        # Byg deck
+        cards = []
+        for suit in SUITS:
+            for value in VALUES:
+                cards.append(suit + value)
 
-    # Kopier deck til deck_antal
-    deck_out = []
-    for i in range(deck_antal):
-        deck_out.extend(deck)
+        # Tilføj jokere
+        cards.extend(['J10']*3)
 
-    return deck_out
+        # Kopier deck til deck_antal
+        self.deck = []
+        for i in range(deck_antal):
+            self.deck.extend(cards)
 
-
+    def shuffle(self):
+        self.deck.shuffle()
     # bland kort
 
 def start():
@@ -33,15 +35,14 @@ def start():
 def main():
     # Spillet bliver styret herfra
 
-    deck = setup_cards(1)
-    print(len(deck))
+    deck = Deck(3)
     start()
 
 
-    import random
+
 
     mylist = deck
-    random.shuffle(mylist)
+    mylist.shuffle()
 
     print(mylist)
 
