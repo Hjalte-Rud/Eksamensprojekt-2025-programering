@@ -1,4 +1,4 @@
-
+# Todo Project files ud af git!
 
 def setup_cards(deck_antal=1):
     # skab kortdeck(s)
