@@ -18,7 +18,11 @@ def setup_cards(deck_antal=1):
     deck.extend(['J10']*3)
 
     # Kopier deck til deck_antal
-    return deck
+    deck_out = []
+    for i in range(deck_antal):
+        deck_out.extend(deck)
+
+    return deck_out
 
 
     # bland kort
@@ -29,9 +33,18 @@ def start():
 def main():
     # Spillet bliver styret herfra
 
-    deck = setup_cards()
-    print(deck)
+    deck = setup_cards(1)
+    print(len(deck))
     start()
+
+
+    import random
+
+    mylist = deck
+    random.shuffle(mylist)
+
+    print(mylist)
+
 
 
 if __name__ == '__main__':
