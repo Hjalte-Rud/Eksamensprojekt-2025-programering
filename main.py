@@ -32,40 +32,52 @@ class Deck:
         random.shuffle(self.deck)
     # bland kort
 
-def start():
-    pass
-
-def main():
-    # Spillet bliver styret herfra
-
-    deck = Deck(3)
-    start()
-
-
-
-
-    mylist = deck
-    mylist.shuffle()
-
-    print(mylist)
-
-
-
-if __name__ == '__main__':
-    main()
+    def deal(self, num_of_cards=1):
+        out = []
+        for i in range(num_of_cards):
+            out.append(self.deck.pop(0))
+        return out
 
 class Game:
-    def hit():
+
+    def __init__(self):
+        self.deck = Deck()
+        self.deck.shuffle()
+
+        self.hand = []
+        self.hand.extend(self.deck.deal(4))
+
+    def hit(self):
+        self.hand.extend(self.deck.deal())
+
+    def stand(self):
         pass
 
-    def stand():
+    def bet(self, amount):
         pass
 
-    def bet():
+    def check_win(self):
         pass
 
-    def check_win():
-        pass
+    def check_hand(self):
+        total = 0
+        aces = 0
+        for card in self.hand:
+            value = card[1:]
+            if value.isdigit():
+                total += int(value)
+            else:
+                aces += 1
+                total += 11
 
-    def check_hand():
-        pass
+        # Konverter esser hvis bust
+        while total > 21 and aces > 0:
+            total -= 10
+            aces -= 1
+
+        return total
+
+if __name__ == '__main__':
+    game = Game()
+    print(game.hand)
+    print(game.check_hand())
