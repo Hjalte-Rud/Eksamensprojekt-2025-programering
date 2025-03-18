@@ -25,8 +25,11 @@ class Deck:
         for i in range(deck_antal):
             self.deck.extend(cards)
 
+    def __str__(self):
+        return str(self.deck)
+
     def shuffle(self):
-        self.deck.shuffle()
+        random.shuffle(self.deck)
     # bland kort
 
 def start():
