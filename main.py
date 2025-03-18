@@ -54,3 +54,18 @@ def main():
 if __name__ == '__main__':
     main()
 
+class Game:
+    def hit()
+        pass
+
+    def stand ()
+        pass
+
+    def bet ():
+        pass
+
+    def check_win ()
+        pass
+
+    def check_hand ()
+        pass
