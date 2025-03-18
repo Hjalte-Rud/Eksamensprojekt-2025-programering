@@ -55,17 +55,17 @@ if __name__ == '__main__':
     main()
 
 class Game:
-    def hit()
+    def hit():
         pass
 
-    def stand ()
+    def stand():
         pass
 
-    def bet ():
+    def bet():
         pass
 
-    def check_win ()
+    def check_win():
         pass
 
-    def check_hand ()
+    def check_hand():
         pass
