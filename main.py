@@ -44,14 +44,29 @@ class Game:
         self.deck = Deck()
         self.deck.shuffle()
 
-        self.hand = []
-        self.hand.extend(self.deck.deal(4))
+        self.dealer_hand = []
+        self.dealer_hand.extend(self.deck.deal(2))
 
-    def hit(self):
-        self.hand.extend(self.deck.deal())
+        self.player_hand = []
+
+    def play_dealer_hand(self):
+        while self.check_hand(self.dealer_hand) <= 16:
+            self.hit(self.dealer_hand)
+
+    def deal_player_hand(self):
+        (self.player_hand.extend(self.deck.deal(2)))
+
+    def hit(self, hand):
+        hand.extend(self.deck.deal())
 
     def stand(self):
-        pass
+        for stand in self(num_of_cards):
+           self.wait.turn(self.deck)
+
+        return str(self.deck)
+
+
+
 
     def bet(self, amount):
         pass
@@ -59,10 +74,10 @@ class Game:
     def check_win(self):
         pass
 
-    def check_hand(self):
+    def check_hand(self, hand):
         total = 0
         aces = 0
-        for card in self.hand:
+        for card in hand:
             value = card[1:]
             if value.isdigit():
                 total += int(value)
@@ -77,7 +92,21 @@ class Game:
 
         return total
 
+    def print_hand(self, hand):
+        print(hand, self.check_hand(hand))
+
 if __name__ == '__main__':
     game = Game()
-    print(game.hand)
-    print(game.check_hand())
+    game.play_dealer_hand()
+    game.print_hand(game.dealer_hand)
+
+    game.deal_player_hand()
+
+    choice = None
+    while not game.check_win():
+        game.print_hand(game.player_hand)
+        choice = input()
+        if choice == '':
+            game.hit(game.player_hand)
+        else:
+            print(game.check_win())
