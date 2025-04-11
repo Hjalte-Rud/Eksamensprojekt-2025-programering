@@ -72,6 +72,17 @@ class Game:
         pass
 
     def check_win(self):
+        if self.check_hand(self.dealer_hand) > 21:
+            return 'Player wins'
+            Print ("Player wins")
+
+        elif self.check_hand(self.player_hand) > 21:
+            return 'Dealer wins'
+            print ("Dealer wins")
+
+        # Er dealer eller player bust?
+        # Hvis ikke, check uafgjort
+        # Hvis ikke, check højeste hånd
         pass
 
     def check_hand(self, hand):
@@ -108,5 +119,7 @@ if __name__ == '__main__':
         choice = input()
         if choice == '':
             game.hit(game.player_hand)
+        elif choice in ['s', 'S']:
+            break
         else:
             print(game.check_win())
