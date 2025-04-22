@@ -71,19 +71,28 @@ class Game:
     def bet(self, amount):
         pass
 
-    def check_win(self):
-        if self.check_hand(self.dealer_hand) > 21:
+    def check_bust(self):
+        dealer_total = self.check_hand(self.dealer_hand)
+        player_total = self.check_hand(self.player_hand)
+        if dealer_total > 21:
             return 'Player wins'
-            Print ("Player wins")
+            print ("Player wins")
 
-        elif self.check_hand(self.player_hand) > 21:
+        elif player_total > 21:
             return 'Dealer wins'
             print ("Dealer wins")
 
-        # Er dealer eller player bust?
-        # Hvis ikke, check uafgjort
-        # Hvis ikke, check højeste hånd
-        pass
+    def check_win(self):
+        dealer_total = self.check_hand(self.dealer_hand)
+        player_total = self.check_hand(self.player_hand)
+        if dealer_total == player_total:
+            return 'Tie, nobody wins'
+
+        elif dealer_total > player_total:
+            return 'Dealer wins'
+
+        else:
+            return 'Player wins'
 
     def check_hand(self, hand):
         total = 0
@@ -109,17 +118,22 @@ class Game:
 if __name__ == '__main__':
     game = Game()
     game.play_dealer_hand()
+    print('Dealer')
     game.print_hand(game.dealer_hand)
 
     game.deal_player_hand()
 
     choice = None
-    while not game.check_win():
+    print('Player')
+    while not game.check_bust():
         game.print_hand(game.player_hand)
         choice = input()
         if choice == '':
             game.hit(game.player_hand)
         elif choice in ['s', 'S']:
-            break
-        else:
             print(game.check_win())
+            break
+    else:
+        game.print_hand(game.player_hand)
+        print(game.check_bust())
+
