@@ -1,5 +1,6 @@
 import random
 print ("S for Stand, H for Hit")
+print ()
 
 class Deck:
     def __init__(self, deck_antal=1):
