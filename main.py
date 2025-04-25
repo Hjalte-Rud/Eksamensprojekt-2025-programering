@@ -1,6 +1,6 @@
 import random
 print ()
-print ("S for Stand, H for Hit")
+print ("S/s for Stand, H/h for Hit")
 print ()
 
 class Deck:
