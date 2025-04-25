@@ -1,4 +1,5 @@
 import random
+print ("S for Stand, H for Hit")
 
 class Deck:
     def __init__(self, deck_antal=1):
@@ -66,8 +67,6 @@ class Game:
         return str(self.deck)
 
 
-
-
     def bet(self, amount):
         pass
 
@@ -128,7 +127,7 @@ if __name__ == '__main__':
     while not game.check_bust():
         game.print_hand(game.player_hand)
         choice = input()
-        if choice == '':
+        if choice in ['h', 'H']:
             game.hit(game.player_hand)
         elif choice in ['s', 'S']:
             print(game.check_win())
