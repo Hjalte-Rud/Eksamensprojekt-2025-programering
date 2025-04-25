@@ -1,4 +1,5 @@
 import random
+print ()
 print ("S for Stand, H for Hit")
 print ()
 
