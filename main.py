@@ -63,7 +63,7 @@ class Game:
         hand.extend(self.deck.deal())
 
     def stand(self):
-        for stand in self(num_of_cards):
+        for stand in self.num_of_cards:
            self.wait.turn(self.deck)
 
         return str(self.deck)
